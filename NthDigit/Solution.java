@@ -29,18 +29,18 @@ package NthDigit;
 public class Solution {
     public int findNthDigit(int n) {
         int len = 1;
-        int count = 9;
+        long count = 9;
         int start = 1;
 
         while (n > len * count) {
-            n = n - len * count;
-            len ++;
-            start = start * 10;
-            count = count * 10;
+            n -= len * count;
+            len += 1;
+            count *= 10;
+            start *= 10;
         }
 
-        start += (n - 1) / 10;
-        String s = String.valueOf(start);
+        start += (n - 1) / len;
+        String s = Integer.toString(start);
         return Character.getNumericValue(s.charAt((n - 1) % len));
     }
 }

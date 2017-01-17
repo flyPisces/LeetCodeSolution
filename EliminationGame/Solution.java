@@ -21,27 +21,24 @@ package EliminationGame;
  Output:
  6
 
+ https://discuss.leetcode.com/topic/59293/java-easiest-solution-o-logn-with-explanation
 
  * Created by aoshen on 9/25/16.
  */
 public class Solution {
     public int lastRemaining(int n) {
-        if (1 == n) {
-            return 1;
+        boolean left = true;
+        int remaining = n;
+        int step = 1;
+        int head = 1;
+        while (remaining > 1) {
+            if (left || remaining % 2 ==1) {
+                head = head + step;
+            }
+            remaining = remaining / 2;
+            step = step * 2;
+            left = !left;
         }
-
-        return 2 * backLastRemaining(n / 2);
-    }
-
-    public int backLastRemaining(int n) {
-        if (1 == n) {
-            return 1;
-        }
-
-        if (n % 2 == 0) {
-            return 2 * lastRemaining(n / 2) - 1;
-        }
-
-        return 2 * lastRemaining(n / 2);
+        return head;
     }
 }
