@@ -3,7 +3,8 @@ package FindLeavesofBinaryTree;
 import java.util.*;
 
 /**
- * Given a binary tree, collect a tree's nodes as if you were doing this: Collect and remove all leaves, repeat until the tree is empty.
+ * Given a binary tree, collect a tree's nodes as if you were doing this:
+ * Collect and remove all leaves, repeat until the tree is empty.
 
  Example:
  Given binary tree

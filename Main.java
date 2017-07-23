@@ -11,10 +11,10 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.println(solution.isMatch("abbaa", "ab*a*c*a"));
-
-        System.out.println("aab".matches("c*a*b"));
-
+        String expression = "-1/2+1/2";
+        String[] splits = expression.split("(?=[+/-])");
+        for (int i = 0;i < splits.length;++ i) {
+            System.out.println(splits[i]);
+        }
     }
 }

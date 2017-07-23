@@ -6,9 +6,11 @@ import java.util.*;
 /**
  * Given a set of words (without duplicates), find all word squares you can build from them.
 
- A sequence of words forms a valid word square if the kth row and column read the exact same string, where 0 ≤ k < max(numRows, numColumns).
+ A sequence of words forms a valid word square if the kth row and column read the exact same string,
+ where 0 ≤ k < max(numRows, numColumns).
 
- For example, the word sequence ["ball","area","lead","lady"] forms a word square because each word reads the same both horizontally and vertically.
+ For example, the word sequence ["ball","area","lead","lady"] forms a word square because each word
+ reads the same both horizontally and vertically.
 
  b a l l
  a r e a
@@ -39,7 +41,8 @@ import java.util.*;
  ]
 
  Explanation:
- The output consists of two word squares. The order of output does not matter (just the order of words in each word square matters).
+ The output consists of two word squares.
+ The order of output does not matter (just the order of words in each word square matters).
  Example 2:
 
  Input:
@@ -60,11 +63,13 @@ import java.util.*;
  ]
 
  Explanation:
- The output consists of two word squares. The order of output does not matter (just the order of words in each word square matters).
+ The output consists of two word squares.
+ The order of output does not matter (just the order of words in each word square matters).
 
  * Created by aoshen on 10/16/16.
  */
-public class Solution {
+public class
+Solution {
     public List<List<String>> wordSquares(String[] words) {
         List<List<String>> results = new ArrayList<>();
 

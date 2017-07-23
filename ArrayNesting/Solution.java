@@ -1,7 +1,8 @@
 package ArrayNesting;
 
 /**
- * A zero-indexed array A consisting of N different integers is given. The array contains all integers in the range [0, N - 1].
+ * A zero-indexed array A consisting of N different integers is given.
+ * The array contains all integers in the range [0, N - 1].
 
  Sets S[K] for 0 <= K < N are defined as follows:
 

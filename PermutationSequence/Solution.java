@@ -46,8 +46,6 @@ public class Solution {
             k = k % factorial;
             if (times > 0) {
                 factorial /= times;
-            }else {
-                factorial /= times;
             }
 
             times --;

@@ -47,7 +47,7 @@ public class Solution {
 
             long d = s.equals(n) ? Long.MAX_VALUE : Math.abs(Long.parseLong(s) - Long.parseLong(n));
             if (d < diff) {
-                d = diff;
+                diff = d;
                 ret = s;
             }
         }

@@ -3,7 +3,8 @@ package NonnegativeIntegerswithoutConsecutiveOnes;
 import java.util.*;
 
 /**
- * Given a positive integer n, find the number of non-negative integers less than or equal to n, whose binary representations do NOT contain consecutive ones.
+ * Given a positive integer n, find the number of non-negative integers less than or equal to n,
+ * whose binary representations do NOT contain consecutive ones.
 
  Example 1:
  Input: 5
@@ -25,8 +26,8 @@ public class Solution {
         StringBuilder sb = new StringBuilder(Integer.toBinaryString(num)).reverse();
         int n = sb.length();
 
-        int[] a = new int[n];
-        int[] b = new int[n];
+        int[] a = new int[n];  // ending with 0
+        int[] b = new int[n];   // ending with 1
         a[0]=b[0]=1;
 
         for (int i = 1;i < n;++ i) {

@@ -1,7 +1,8 @@
 package PartitionEqualSubsetSum;
 
 /**
- * Given a non-empty array containing only positive integers, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.
+ * Given a non-empty array containing only positive integers,
+ * find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.
 
  Note:
  Both the array size and each of the array element will not exceed 100.

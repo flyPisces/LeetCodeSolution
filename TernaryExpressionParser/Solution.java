@@ -1,7 +1,11 @@
 package TernaryExpressionParser;
 
 /**
- * Given a string representing arbitrarily nested ternary expressions, calculate the result of the expression. You can always assume that the given expression is valid and only consists of digits 0-9, ?, :, T and F (T and F represent True and False respectively).
+ * Given a string representing arbitrarily nested ternary expressions,
+ * calculate the result of the expression.
+ *
+ * You can always assume that the given expression is valid and only consists of digits 0-9, ?, :,
+ * T and F (T and F represent True and False respectively).
 
  Note:
 

@@ -13,7 +13,7 @@ import java.util.Arrays;
  *
  *  Created by aoshen on 6/5/16.
  */
-public class Solution {
+public class  Solution {
 
     class Bucket{
         int low;

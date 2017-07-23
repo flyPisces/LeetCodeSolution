@@ -3,7 +3,8 @@ package MagicalString;
 /**
  * A magical string S consists of only '1' and '2' and obeys the following rules:
 
- The string S is magical because concatenating the number of contiguous occurrences of characters '1' and '2' generates the string S itself.
+ The string S is magical because concatenating the number of contiguous occurrences of characters '1' and '2'
+ generates the string S itself.
 
  The first few elements of string S is the following: S = "1221121221221121122……"
 

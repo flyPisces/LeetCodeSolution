@@ -1,5 +1,7 @@
 package VerifyPreorderSequenceinBST;
 
+import java.util.*;
+
 /**
  * Given an array of numbers, verify whether it is the correct preorder traversal sequence of a binary search tree.
 
@@ -13,20 +15,15 @@ package VerifyPreorderSequenceinBST;
  */
 public class Solution {
     public boolean verifyPreorder(int[] preorder) {
-        int i = -1;
-        int min = Integer.MIN_VALUE;
-
-        for (int num : preorder) {
-            if (num < min) return false;
-
-            while (i < preorder.length && num > preorder[i]) {
-                min = preorder[i];
-                i --;
-            }
-
-            preorder[++ i] = num;
+        int low = Integer.MIN_VALUE;
+        Stack<Integer> path = new Stack();
+        for (int p : preorder) {
+            if (p < low)
+                return false;
+            while (!path.empty() && p > path.peek())
+                low = path.pop();
+            path.push(p);
         }
-
         return true;
     }
 }

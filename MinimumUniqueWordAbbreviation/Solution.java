@@ -4,7 +4,9 @@ package MinimumUniqueWordAbbreviation;
  * A string such as "word" contains the following abbreviations:
 
  ["word", "1ord", "w1rd", "wo1d", "wor1", "2rd", "w2d", "wo2", "1o1d", "1or1", "w1r1", "1o2", "2r1", "3d", "w3", "4"]
- Given a target string and a set of strings in a dictionary, find an abbreviation of this target string with the smallest possible length such that it does not conflict with abbreviations of the strings in the dictionary.
+ Given a target string and a set of strings in a dictionary, f
+ ind an abbreviation of this target string with the smallest possible length such that
+ it does not conflict with abbreviations of the strings in the dictionary.
 
  Each number or letter in the abbreviation is considered length = 1. For example, the abbreviation "a32bc" has length = 4.
 
