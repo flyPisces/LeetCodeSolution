@@ -16,7 +16,7 @@ package FindtheDerangementofAnArray;
 
  * Created by aoshen on 7/3/17.
  */
-public class Solution {
+public class  Solution {
     public int findDerangement(int n) {
         long dn2 = 0, dn1 = 1;
         if (n == 1) return 0;

@@ -7,9 +7,13 @@ import java.util.*;
 
  However, there are some special offers, and a special offer consists of one or more different kinds of items with a sale price.
 
- You are given the each item's price, a set of special offers, and the number we need to buy for each item. The job is to output the lowest price you have to pay for exactly certain items as given, where you could make optimal use of the special offers.
+ You are given the each item's price, a set of special offers, and the number we need to buy for each item.
+ The job is to output the lowest price you have to pay for exactly certain items as given,
+ where you could make optimal use of the special offers.
 
- Each special offer is represented in the form of an array, the last number represents the price you need to pay for this special offer, other numbers represents how many specific items you could get if you buy this offer.
+ Each special offer is represented in the form of an array,
+ the last number represents the price you need to pay for this special offer,
+ other numbers represents how many specific items you could get if you buy this offer.
 
  You could use any of special offers as many times as you want.
 
@@ -44,7 +48,7 @@ public class Solution {
                 int remain = needs.get(j) - offer.get(j);
                 needs.set(j, remain);
                 if (!invalidOffer && remain < 0) {
-                    invalidOffer = false;
+                    invalidOffer = true;
                 }
             }
 

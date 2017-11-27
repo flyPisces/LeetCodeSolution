@@ -34,6 +34,7 @@ public class Solution {
         }
 
         if (now >= 0) return true;
+
         for (int i = k;i < len;++ i) {
             now += arr[i];
             last += arr[i - k];

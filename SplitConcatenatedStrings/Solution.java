@@ -1,7 +1,8 @@
 package SplitConcatenatedStrings;
 
 /**
- * Given a list of strings, you could concatenate these strings together into a loop, where for each string you could choose to reverse it or not.
+ * Given a list of strings, you could concatenate these strings together into a loop,
+ * where for each string you could choose to reverse it or not.
  * Among all the possible loops, you need to find the lexicographically biggest string after cutting the loop,
  * which will make the looped string into a regular one.
 

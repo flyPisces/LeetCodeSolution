@@ -51,7 +51,7 @@ public class Solution {
                 }
             }
 
-            dp[i][j][j] = temp;
+            dp[i][j][k] = temp;
             return temp;
         }
     }

@@ -22,17 +22,14 @@ import java.util.Arrays;
  */
 public class Solution {
     public int leastInterval(char[] tasks, int n) {
-        int[] arr = new int[26];
-
-        for (char c: tasks) {
-            arr[c - 'A'] ++;
+        int[] map = new int[26];
+        for (char c: tasks)
+            map[c - 'A']++;
+        Arrays.sort(map);
+        int max_val = map[25] - 1, idle_slots = max_val * n;
+        for (int i = 24; i >= 0 && map[i] > 0; i--) {
+            idle_slots -= Math.min(map[i], max_val);
         }
-
-        Arrays.sort(arr);
-
-        int i = 25;
-        while (i >= 0 && arr[i] == arr[25]) --i;
-
-        return Math.max(tasks.length, (arr[25] - 1) * (n + 1) + 25 - i);
+        return idle_slots > 0 ? idle_slots + tasks.length : tasks.length;
     }
 }

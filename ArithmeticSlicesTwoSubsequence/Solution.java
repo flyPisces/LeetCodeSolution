@@ -3,7 +3,8 @@ package ArithmeticSlicesTwoSubsequence;
 import java.util.HashMap;
 
 /**
- * A sequence of numbers is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.
+ * A sequence of numbers is called arithmetic if it consists of at least three elements
+ * and if the difference between any two consecutive elements is the same.
 
  For example, these are arithmetic sequences:
 
@@ -14,9 +15,11 @@ import java.util.HashMap;
 
  1, 1, 2, 5, 7
 
- A zero-indexed array A consisting of N numbers is given. A subsequence slice of that array is any sequence of integers (P0, P1, ..., Pk) such that 0 ≤ P0 < P1 < ... < Pk < N.
+ A zero-indexed array A consisting of N numbers is given.
+ A subsequence slice of that array is any sequence of integers (P0, P1, ..., Pk) such that 0 ≤ P0 < P1 < ... < Pk < N.
 
- A subsequence slice (P0, P1, ..., Pk) of array A is called arithmetic if the sequence A[P0], A[P1], ..., A[Pk-1], A[Pk] is arithmetic. In particular, this means that k ≥ 2.
+ A subsequence slice (P0, P1, ..., Pk) of array A is called arithmetic
+ if the sequence A[P0], A[P1], ..., A[Pk-1], A[Pk] is arithmetic. In particular, this means that k ≥ 2.
 
  The function should return the number of arithmetic subsequence slices in the array A.
 
