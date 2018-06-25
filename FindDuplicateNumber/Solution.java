@@ -21,7 +21,7 @@ public class Solution {
         int high = nums.length - 1;
 
 
-        while (low <= high) {
+        while (low < high) {
             int mid = low + (high - low) / 2;
 
             int cnt = 0;
@@ -34,7 +34,7 @@ public class Solution {
             if (cnt <= mid) {
                 low = mid + 1;
             } else {
-                high = mid - 1;
+                high = mid;
             }
         }
         return low;

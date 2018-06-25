@@ -9,7 +9,8 @@ package StudentAttendanceRecordTwo;
  'A' : Absent.
  'L' : Late.
  'P' : Present.
- A record is regarded as rewardable if it doesn't contain more than one 'A' (absent) or more than two continuous 'L' (late).
+ A record is regarded as rewardable if it doesn't contain more than one 'A' (absent) or
+ more than two continuous 'L' (late).
 
  Example 1:
  Input: n = 2

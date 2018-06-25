@@ -44,7 +44,7 @@ public class Solution {
             maxCount = Math.max(maxCount, ++count[s.charAt(end) - 'A']);
             while (end - start + 1 - maxCount > k) {
                 count[s.charAt(start) - 'A']--;
-                maxCount = Math.max(maxCount, count[s.charAt(start) - 'A']);
+              //  maxCount = Math.max(maxCount, count[s.charAt(start) - 'A']);
                 start ++;
             }
             maxLength = Math.max(maxLength, end - start + 1);

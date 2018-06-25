@@ -1,7 +1,10 @@
 package FrogJump;
 
+import java.util.*;
+
 /**
- * A frog is crossing a river. The river is divided into x units and at each unit there may or may not exist a stone.
+ * A frog is crossing a river. The river is divided into x units and at each unit
+ * there may or may not exist a stone.
  * The frog can jump on a stone, but it must not jump into the water.
 
  Given a list of stones' positions (in units) in sorted ascending order,
@@ -41,24 +44,20 @@ package FrogJump;
  */
 public class Solution {
     public boolean canCross(int[] stones) {
-        int len = stones.length;
-        int[] dp = new int[len];
-
-        for (int i = 0;i < len;++ i) {
-
-            if (i > 0 && dp[i] == 0) continue;
-
-            for (int j = i + 1;j < len;++ j) {
-                int gap = stones[j] - stones[i];
-
-                if (gap > dp[i] + 1) break;
-
-                if (gap == dp[i] - 1 || gap == dp[i] || gap == dp[i] + 1) {
-                    dp[j] = Math.max(gap, dp[j]);
+        HashMap<Integer, Set<Integer>> map = new HashMap<>();
+        for (int i = 0; i < stones.length; i++) {
+            map.put(stones[i], new HashSet<Integer>());
+        }
+        map.get(0).add(0);
+        for (int i = 0; i < stones.length; i++) {
+            for (int k : map.get(stones[i])) {
+                for (int step = k - 1; step <= k + 1; step++) {
+                    if (step > 0 && map.containsKey(stones[i] + step)) {
+                        map.get(stones[i] + step).add(step);
+                    }
                 }
             }
         }
-
-        return dp[len - 1] > 0;
+        return map.get(stones[stones.length - 1]).size() > 0;
     }
 }

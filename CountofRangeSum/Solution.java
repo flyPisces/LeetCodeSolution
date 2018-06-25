@@ -15,99 +15,29 @@ package CountofRangeSum;
  * Created by aoshen on 5/29/16.
  */
 public class Solution {
-
-    private class TreeNode {
-        long val = 0;
-        int count = 1;
-        int leftSize = 0;
-        int rightSize = 0;
-
-        TreeNode left = null;
-        TreeNode right = null;
-
-        public TreeNode(long val) {
-            this.val = val;
-            count = 1;
-            leftSize = 0;
-            rightSize = 0;
-            left = null;
-            right = null;
-        }
-    }
-
-    private TreeNode insert(TreeNode root, long newVal) {
-        if (root == null) {
-            return new TreeNode(newVal);
-        }
-
-        if (root.val == newVal) {
-            root.count ++;
-        } else if (root.val < newVal) {
-            root.right = insert(root.right, newVal);
-            root.rightSize ++;
-        } else {
-            root.left = insert(root.left, newVal);
-            root.leftSize ++;
-        }
-
-        return root;
-    }
-
-    private int countSmaller(TreeNode root, long val) {
-        if (root == null) {
-            return 0;
-        }
-
-        if (val == root.val) {
-            return root.leftSize;
-        } else if (root.val < val) {
-            return root.leftSize + root.count + countSmaller(root.right, val);
-        } else {
-            return countSmaller(root.left, val);
-        }
-    }
-
-    private int countLarger(TreeNode root, long val) {
-        if (root == null) {
-            return 0;
-        }
-
-        if (root.val == val) {
-            return root.rightSize;
-        } else if (root.val > val) {
-            return root.count + root.rightSize + countLarger(root.left, val);
-        } else {
-            return countLarger(root.right, val);
-        }
-    }
-
-    private int rangeSize(TreeNode root, long lower, long upper) {
-        int total = root.count + root.leftSize + root.rightSize;
-        int smallerCnt = countSmaller(root, lower);
-        int largerCnt = countLarger(root, upper);
-
-        return (total - smallerCnt - largerCnt);
-    }
-
     public int countRangeSum(int[] nums, int lower, int upper) {
-        int result = 0;
+        int n = nums.length;
+        long[] sums = new long[n + 1];
+        for (int i = 0; i < n; ++i)
+            sums[i + 1] = sums[i] + nums[i];
+        return countWhileMergeSort(sums, 0, n + 1, lower, upper);
+    }
 
-        if (null == nums || nums.length == 0) {
-            return result;
+    private int countWhileMergeSort(long[] sums, int start, int end, int lower, int upper) {
+        if (end - start <= 1) return 0;
+        int mid = (start + end) / 2;
+        int count = countWhileMergeSort(sums, start, mid, lower, upper)
+                + countWhileMergeSort(sums, mid, end, lower, upper);
+        int j = mid, k = mid, t = mid;
+        long[] cache = new long[end - start];
+        for (int i = start, r = 0; i < mid; ++i, ++r) {
+            while (k < end && sums[k] - sums[i] < lower) k++;
+            while (j < end && sums[j] - sums[i] <= upper) j++;
+            while (t < end && sums[t] < sums[i]) cache[r++] = sums[t++];
+            cache[r] = sums[i];
+            count += j - k;
         }
-
-        long[] sums = new long[nums.length + 1];
-        for (int i = 1;i <= nums.length;++ i) {
-            sums[i] = sums[i - 1] + nums[i - 1];
-        }
-
-        TreeNode root = new TreeNode(sums[0]);
-
-        for (int i = 1;i <= nums.length;++ i) {
-            result += rangeSize(root, sums[i] - upper, sums[i] - lower);
-            insert(root, sums[i]);
-        }
-
-        return result;
+        System.arraycopy(cache, 0, sums, start, t - start);
+        return count;
     }
 }

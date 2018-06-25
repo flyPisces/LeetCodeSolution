@@ -11,18 +11,15 @@ package PaintFence;
  */
 public class Solution {
     public int numWays(int n, int k) {
-        int[] dp = new int[] {0, k, k * k, 0};
-
-        if (n <= 2) {
-            return dp[n];
+        if(n == 0) return 0;
+        else if(n == 1) return k;
+        int diffColorCounts = k*(k-1);
+        int sameColorCounts = k;
+        for(int i=2; i<n; i++) {
+            int temp = diffColorCounts;
+            diffColorCounts = (diffColorCounts + sameColorCounts) * (k-1);
+            sameColorCounts = temp;
         }
-
-        for (int i = 3;i <= n;++ i) {
-            dp[3] = (k - 1) * (dp[1] + dp[2]);
-            dp[1] = dp[2];
-            dp[2] = dp[3];
-        }
-
-        return dp[3];
+        return diffColorCounts + sameColorCounts;
     }
 }

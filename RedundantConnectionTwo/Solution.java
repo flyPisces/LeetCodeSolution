@@ -59,9 +59,9 @@ public class Solution {
             int child = edge[1], father = edge[0];
             if (root(parent, father) == child) {
                 if (can1[0] == -1) {
-                    return edge;
+                    return edge;  // find a circle
                 }
-                return can1;
+                return can1; //[[4,2],[1,5],[5,2],[5,3],[2,4]] corner case
             }
             parent[child] = father;
         }

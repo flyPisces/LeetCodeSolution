@@ -29,7 +29,7 @@ package KthSmallestNumberinMultiplicationTable;
  */
 public class Solution {
     public int findKthNumber(int m, int n, int k) {
-        int start = 1, end = m * n + 1;
+        int start = 1, end = m * n;
 
         while (start < end) {
             int mid = start + (end - start) / 2;
