@@ -9,9 +9,8 @@ import java.util.Queue;
 
  graph.length = N, and j != i is in the list graph[i] exactly once, if and only if nodes i and j are connected.
 
- Return the length of the shortest path that visits every node. You may start and stop at any node, you may revisit nodes multiple times, and you may reuse edges.
-
-
+ Return the length of the shortest path that visits every node.
+ You may start and stop at any node, you may revisit nodes multiple times, and you may reuse edges.
 
  Example 1:
 
