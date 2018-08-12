@@ -45,4 +45,9 @@ public class Solution {
 
     // Computes gcd using Euclidean algorithm
     public int gcd(int x, int y) { return x == 0 || y == 0 ? x + y : gcd(y, x % y); }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        System.out.println(sol.fractionAddition("-1/2+1/2"));
+    }
 }
