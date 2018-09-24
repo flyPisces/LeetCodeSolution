@@ -7,12 +7,12 @@ import java.util.Random;
  * You can assume that the given target number must exist in the array.
 
  Note:
- The array size can be very large. Solution that uses too much extra space will not pass the judge.
+ The array size can be very large. FreqStack that uses too much extra space will not pass the judge.
 
  Example:
 
  int[] nums = new int[] {1,2,3,3,3};
- Solution solution = new Solution(nums);
+ FreqStack solution = new FreqStack(nums);
 
  // pick(3) should return either index 2, 3, or 4 randomly.
  Each index should have equal probability of returning.

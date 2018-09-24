@@ -20,7 +20,7 @@ import java.util.*;
  The strings "10" [occuring at S[1]] and "1100" [at S[3]] are swapped.
  This is the lexicographically largest string possible after some number of swaps.
  */
-public class Solution {
+public class  Solution {
     public String makeLargestSpecial(String S) {
         List<String> results = new ArrayList<>();
 

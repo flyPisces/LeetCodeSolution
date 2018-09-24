@@ -25,7 +25,7 @@ package BinaryTreeLongestConsecutiveSequence;
 
  * Created by aoshen on 6/28/16.
  */
-public class Solution {
+public class  Solution {
     public int longestConsecutive(TreeNode root) {
         if (root == null) {
             return 0;

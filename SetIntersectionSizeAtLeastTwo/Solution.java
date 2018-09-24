@@ -24,6 +24,8 @@ import java.util.*;
  */
 public class Solution {
     public int intersectionSizeTwo(int[][] intervals) {
+        // One case that is important to handle is the following: [[1, 2], [2, 3], [2, 4], [4, 5]]. If we put 4, 5 in S,
+        // then we put 2 in S, when handling [2, 3] we need to put 3 in S, not 2 which was already put.
         Arrays.sort(intervals, (a, b) -> a[0] != b[0] ? a[0] - b[0] : b[1] - a[1]);
 
         int ans = 0;

@@ -47,7 +47,7 @@ import java.util.*;
 
  * Created by aoshen on 8/7/17.
  */
-public class Solution {
+public class  Solution {
     int rows = 0;
 
     public List<List<String>> printTree(TreeNode root) {

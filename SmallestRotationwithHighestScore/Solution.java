@@ -37,6 +37,9 @@ package SmallestRotationwithHighestScore;
  So we will choose the smallest K, which is 0.
  */
 public class Solution {
+
+    //https://leetcode.com/problems/smallest-rotation-with-highest-score/solution/
+    //A[2] = 5
     public int bestRotation(int[] A) {
         int N = A.length;
         int[] bad = new int[N];

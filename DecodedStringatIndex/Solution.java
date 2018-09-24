@@ -36,7 +36,7 @@ public class Solution {
 
         for (int i = 0;i < N;++ i) {
             if (Character.isDigit(S.charAt(i))) {
-                size *= S.charAt(i) - 'a';
+                size *= S.charAt(i) - '0';
             } else {
                 size ++;
             }

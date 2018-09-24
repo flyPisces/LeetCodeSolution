@@ -40,7 +40,7 @@ class Solution {
             for (int i = 0; i < R.counts.size(); ++i) {
                 int c1 = R.counts.get(i);
                 int c2 = R2.counts.get(i);
-                if (c1 < 3 && c1 != c2 || c1 < c2) {
+                if ((c1 < 3 && c1 != c2) || c1 < c2) {
                     invalid = true;
                     break;
                 }
