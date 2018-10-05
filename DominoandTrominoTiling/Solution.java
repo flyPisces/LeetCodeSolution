@@ -20,6 +20,7 @@ package DominoandTrominoTiling;
  XYZ YYZ XZZ XYY XXY
  */
 public class Solution {
+    // https://leetcode.com/problems/domino-and-tromino-tiling/discuss/116581/Detail-and-explanation-of-O(n)-solution-why-dpn2*dn-1+dpn-3
     public int numTilings(int N) {
         int a = 0, b = 1, c = 1, c2, mod = 1000000007;
         while (--N > 0) {

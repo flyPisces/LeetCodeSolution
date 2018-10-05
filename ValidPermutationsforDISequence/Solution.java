@@ -24,6 +24,7 @@ package ValidPermutationsforDISequence;
  (3, 1, 2, 0)
  */
 public class Solution {
+    //https://leetcode.com/problems/valid-permutations-for-di-sequence/solution/
     public int numPermsDISequence(String S) {
         int N = S.length();
         int[][] dp = new int[N + 1][N + 1];
