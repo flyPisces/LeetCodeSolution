@@ -39,6 +39,7 @@ package IncreasingOrderSearchTree;
  Each node will have a unique integer value from 0 to 1000.
  */
 public class Solution {
+    // https://leetcode.com/problems/increasing-order-search-tree/discuss/165885/C%2B%2BJavaPython-Self-Explained-5-line-O(N)
     public TreeNode increasingBST(TreeNode root) {
         return dfs(root, null);
     }

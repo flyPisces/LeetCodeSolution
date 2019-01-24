@@ -21,6 +21,7 @@ import java.util.List;
  *  Created by aoshen on 4/26/16.
  */
 public class Solution {
+    // https://leetcode.com/problems/permutation-sequence/discuss/22507/%22Explain-like-I'm-five%22-Java-Solution-in-O(n)
     public String getPermutation(int n, int k) {
         k --;
 

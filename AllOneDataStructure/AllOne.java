@@ -16,7 +16,7 @@ import java.util.Set;
 
  * Created by aoshen on 11/13/16.
  */
-public class AllOne {
+public class  AllOne {
 
     private class Bucket {
         int count;

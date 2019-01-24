@@ -27,22 +27,15 @@ package FlattenBTToLinkedList;
  * Created by aoshen on 4/25/16.
  */
 public class Solution {
-    TreeNode lastVisited = null;
+    private TreeNode prev = null;
 
     public void flatten(TreeNode root) {
-        if (root == null) {
+        if (root == null)
             return;
-        }
-
-        if (lastVisited != null) {
-            lastVisited.left = null;
-            lastVisited.right = root;
-        }
-
-        lastVisited = root;
-        TreeNode realRight = root.right;
-
+        flatten(root.right);
         flatten(root.left);
-        flatten(realRight);
+        root.right = prev;
+        root.left = null;
+        prev = root;
     }
 }

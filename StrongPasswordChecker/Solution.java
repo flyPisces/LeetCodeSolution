@@ -16,48 +16,52 @@ package StrongPasswordChecker;
  */
 public class Solution {
     public int strongPasswordChecker(String s) {
-        int result = 0, a = 1, A = 1, d = 1;
-        char[] carr = s.toCharArray();
-        int[] arr = new int[carr.length];
 
-        for (int i = 0;i < arr.length;) {
-            if (Character.isLowerCase(carr[i])) a = 0;
-            if (Character.isUpperCase(carr[i])) A = 0;
-            if (Character.isDigit(carr[i])) d = 0;
+        char [] str = s.toCharArray();
+        boolean isUpper = false, isLower = false, isDigit = false;
+        int missinType = 3;
+        for(char c: str)
+        {
+            if(!isUpper && Character.isUpperCase(c)) { isUpper = true; missinType-=1; } //uppercase
+            if(!isLower && Character.isLowerCase(c)) { isLower = true; missinType-=1; } //lowercase
+            if(!isDigit && Character.isDigit(c)) { isDigit = true; missinType-=1; } //atleast one number
 
-            int j = i;
-            while (i < carr.length && carr[i] == carr[j]) ++ i;
-            arr[j] = i - j;
         }
 
-        int total_missing = (a + A + d);
-        if (carr.length < 6) {
-            result += total_missing + Math.max(0, 6 - total_missing - arr.length);
-        } else {
-            int over_len = Math.max(arr.length - 20, 0), left_over = 0;
-            result += over_len;
-
-            for (int k = 1;k < 3;++ k) {
-                for (int i = 0;i < arr.length && over_len > 0;++ i) {
-                    if (arr[i] < 3 || arr[i] % 3 != (k - 1)) continue;
-                    over_len -= k;
-                    arr[i] -= k;
+        int totalChangeCnt = 0, OneChangeCnt =0, TwoChangeCnt =0, pos=2;
+        while(pos < s.length())
+        {
+            if(str[pos]==str[pos-1] && str[pos-1]==str[pos-2] && str[pos-2]==str[pos])
+            {
+                int length = 2;
+                while(pos < s.length() && str[pos]==str[pos-1])
+                {
+                    length += 1; pos +=1;
                 }
+                totalChangeCnt += length/3;
+                if(length%3==0) OneChangeCnt += 1;
+                else if(length%3==1) TwoChangeCnt += 1;
+
             }
-
-            for (int i = 0;i < arr.length;++ i) {
-                if (arr[i] >= 3 && over_len > 0) {
-                    int need = arr[i] - 2;
-                    arr[i] -= over_len;
-                    over_len -= need;
-                }
-
-                if (arr[i] >= 3) left_over += arr[i] / 3;
+            else
+            {
+                pos=pos+1;
             }
-
-            result += Math.max(total_missing, left_over);
         }
 
-        return result;
+        if(s.length()<6)
+            return Math.max(missinType, 6-s.length());
+        else if(s.length() <=20)
+            return Math.max(missinType,totalChangeCnt );
+        else
+        {
+            int deleteCount = s.length()-20;
+            totalChangeCnt -= Math.min(deleteCount,OneChangeCnt*1)/1;
+            totalChangeCnt -= Math.min(Math.max(deleteCount - OneChangeCnt, 0), TwoChangeCnt * 2) / 2;
+            totalChangeCnt -= Math.max(deleteCount - OneChangeCnt - 2 * TwoChangeCnt, 0) / 3;
+
+
+            return deleteCount + Math.max(missinType, totalChangeCnt);
+        }
     }
 }

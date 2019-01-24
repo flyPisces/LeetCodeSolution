@@ -7,7 +7,7 @@ import java.util.*;
  *
  * Created by aoshen on 5/5/16.
  */
-public class Solution {
+public class  Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         if(lists==null||lists.length==0)
             return null;

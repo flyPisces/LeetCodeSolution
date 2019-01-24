@@ -17,20 +17,29 @@ package FirstMissingPositive;
  */
 public class Solution {
     public int firstMissingPositive(int[] A) {
-        int i = 0;
-        while(i < A.length){
-            if(A[i] == i+1 || A[i] <= 0 || A[i] > A.length) i++;
-            else if(A[A[i]-1] != A[i]) swap(A, i, A[i]-1);
-            else i++;
+
+        if(A==null || A.length==0)
+        {
+            return 1;
         }
-        i = 0;
-        while(i < A.length && A[i] == i+1) i++;
-        return i+1;
+        for(int i=0;i<A.length;i++)
+        {
+            if(A[i]<=A.length && A[i]>0 && A[A[i]-1]!=A[i])
+            {
+                int temp = A[A[i]-1];
+                A[A[i]-1] = A[i];
+                A[i] = temp;
+                i--;
+            }
+        }
+        for(int i=0;i<A.length;i++)
+        {
+            if(A[i]!=i+1)
+                return i+1;
+        }
+
+        return A.length+1;
     }
 
-    private void swap(int[] A, int i, int j){
-        int temp = A[i];
-        A[i] = A[j];
-        A[j] = temp;
-    }
+
 }

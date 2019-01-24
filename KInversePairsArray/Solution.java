@@ -22,6 +22,7 @@ package KInversePairsArray;
  */
 public class Solution {
     public int kInversePairs(int n, int k) {
+        // https://leetcode.com/problems/k-inverse-pairs-array/discuss/104815/Java-DP-O(nk)-solution
         int mod = 1000000007;
         if (k < 0 || k > n * (n - 1) / 2) return 0;
         if (k == 0 || k == n * (n - 1) / 2) return 1;
