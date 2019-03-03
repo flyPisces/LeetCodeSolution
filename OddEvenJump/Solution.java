@@ -66,7 +66,7 @@ public class Solution {
             Integer hi = treeMap.ceilingKey(A[i]), lo = treeMap.floorKey(A[i]);
             if (hi != null) higher[i] = lower[treeMap.get(hi)];
             if (lo != null) lower[i] = higher[treeMap.get(lo)];
-            if (higher[i] || lower[i]) res ++;
+            if (higher[i]) res ++;
             treeMap.put(A[i], i);
         }
         return res;
