@@ -9,4 +9,53 @@ package AvailableCapturesforRook;
  Return the number of pawns the rook can capture in one move.
  */
 public class Solution {
+    public int numRookCaptures(char[][] board) {
+        int x = -1, y = -1;
+        for(int i = 0; i < 8; i++) {
+            for(int j = 0; j < 8; j++) {
+                if(board[i][j] == 'R') {
+                    x = i;
+                    y = j;
+                    break;
+                }
+            }
+            if(x != -1) break;
+        }
+
+        // board[x][y] is the rook
+        // search above, if bishop is hit, break, if pawn is hit, increase counter and break
+        int counter = 0;
+        for(int i = x; i >= 0; i--) {
+            if(board[i][y] == 'B') break;
+            if(board[i][y] == 'p') {
+                counter++;
+                break;
+            }
+        }
+        //search below
+        for(int i = x; i < 8; i++) {
+            if(board[i][y] == 'B') break;
+            if(board[i][y] == 'p') {
+                counter++;
+                break;
+            }
+        }
+        // search left
+        for(int i = y; i >= 0; i--) {
+            if(board[x][i] == 'B') break;
+            if(board[x][i] == 'p') {
+                counter++;
+                break;
+            }
+        }
+        // search right
+        for(int i = y; i < 8; i++) {
+            if(board[x][i] == 'B') break;
+            if(board[x][i] == 'p') {
+                counter++;
+                break;
+            }
+        }
+        return counter;
+    }
 }

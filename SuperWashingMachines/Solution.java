@@ -52,4 +52,10 @@ public class Solution {
         }
         return max;
     }
+
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        sol.findMinMoves(new int[] {3, 0, 3});
+    }
 }
