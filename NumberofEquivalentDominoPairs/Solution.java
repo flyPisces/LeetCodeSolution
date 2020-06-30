@@ -23,7 +23,7 @@ public class Solution {
         for (int[] domino : dominoes) {
             int sum = Math.max(domino[0], domino[1]) * 10 + Math.min(domino[0], domino[1]);
             results += mapping.getOrDefault(sum, 0);
-            mapping.put(sum)
+            mapping.put(sum, mapping.getOrDefault(sum, 0) + 1);
         }
 
         return results;

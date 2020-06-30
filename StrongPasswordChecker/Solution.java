@@ -62,6 +62,7 @@ public class Solution {
 
 
             return deleteCount + Math.max(missinType, totalChangeCnt);
+
         }
     }
 }

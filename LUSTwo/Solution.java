@@ -20,26 +20,32 @@ import java.util.*;
  * Created by aoshen on 4/6/17.
  */
 public class Solution {
-    public int findLUSlength(String[] strs) {
-        Map<String, Integer> subseqFreq = new HashMap<>();
-        for (String s : strs)
-            for (String subSeq : getSubseqs(s))
-                subseqFreq.put(subSeq, subseqFreq.getOrDefault(subSeq, 0) + 1);
-        int longest = -1;
-        for (Map.Entry<String, Integer> entry : subseqFreq.entrySet())
-            if (entry.getValue() == 1) longest = Math.max(longest, entry.getKey().length());
-        return longest;
+    public boolean isSubsequence(String x, String y) {
+        int j = 0;
+        for (int i = 0; i < y.length() && j < x.length(); i++)
+            if (x.charAt(j) == y.charAt(i))
+                j++;
+        return j == x.length();
     }
-
-    public static Set<String> getSubseqs(String s) {
-        Set<String> res = new HashSet<>();
-        if (s.length() == 0) {
-            res.add("");
-            return res;
+    public int findLUSlength(String[] strs) {
+        Arrays.sort(strs, new Comparator < String > () {
+            public int compare(String s1, String s2) {
+                return s2.length() - s1.length();
+            }
+        });
+        for (int i = 0, j; i < strs.length; i++) {
+            boolean flag = true;
+            for (j = 0; j < strs.length; j++) {
+                if (i == j)
+                    continue;
+                if (isSubsequence(strs[i], strs[j])) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag)
+                return strs[i].length();
         }
-        Set<String> subRes = getSubseqs(s.substring(1));
-        res.addAll(subRes);
-        for (String seq : subRes) res.add(s.charAt(0) + seq);
-        return res;
+        return -1;
     }
 }

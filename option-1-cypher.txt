@@ -1,0 +1,29 @@
+profile MATCH (d1:ProfileEngageDate)-[:LIKESONE]->(l1:LookOption1)
+        WHERE d1.profile = "shopper-2004-default" AND d1.date IN ["20191201", "20191202", "20191203", "20191204", "20191205", "20191206", "20191207", "20191208", "20191209", "20191210"]
+        WITH d1.profile AS profile_1, collect(id(l1)) AS looks_ids_1
+        MATCH(d2:ProfileEngageDate)-[:LIKESONE]->(l2:LookOption1)
+        WHERE not (d2.profile="shopper-2004-default") and d2.date in ["20191201", "20191202", "20191203", "20191204", "20191205", "20191206", "20191207", "20191208", "20191209", "20191210"] AND id(l2) IN looks_ids_1
+        WITH profile_1, looks_ids_1, collect(distinct d2.profile) as profile_2
+        MATCH (d3:ProfileEngageDate)-[:LIKESONE]-(l3:LookOption1)
+        WHERE d3.profile in profile_2 AND d3.date in ["20191201", "20191202", "20191203", "20191204", "20191205", "20191206", "20191207", "20191208", "20191209", "20191210"]
+        WITH profile_2, profile_1, looks_ids_1, collect(id(l3)) as looks_ids_2
+        WITH profile_1, profile_2, algo.similarity.jaccard(looks_ids_1, looks_ids_2) AS jaccard_index, filter(x in looks_ids_2 where not x in looks_ids_1) as recs_looks
+        order by jaccard_index desc, profile_2, recs_looks limit 30
+        with REDUCE(output = [], r IN collect(recs_looks) | output + r) AS flat
+        unwind(flat) as dup_flat
+        return distinct dup_flat
+
+profile MATCH (d1:ProfileOption2)-[li:LIKESTWO]->(l1:LookOption2)
+        WHERE d1.profileId = "shopper-2004-default" AND li.date IN ["20191201", "20191202", "20191203", "20191204", "20191205", "20191206", "20191207", "20191208", "20191209", "20191210"]
+        WITH d1.profileId AS profile_1, collect(id(l1)) AS looks_ids_1
+        MATCH(d2:ProfileOption2)-[li2:LIKESTWO]->(l2:LookOption2)
+        WHERE not (d2.profileId="shopper-2004-default") and li2.date in ["20191201", "20191202", "20191203", "20191204", "20191205", "20191206", "20191207", "20191208", "20191209", "20191210"] AND id(l2) IN looks_ids_1
+        WITH profile_1, looks_ids_1, collect(d2.profileId) as profile_2
+        MATCH (d3:ProfileOption2)-[li3:LIKESTWO]-(l3:LookOption2)
+        WHERE d3.profileId in profile_2 AND li3.date in ["20191201", "20191202", "20191203", "20191204", "20191205", "20191206", "20191207", "20191208", "20191209", "20191210"]
+        WITH profile_2, profile_1, looks_ids_1, collect(id(l3)) as looks_ids_2
+        WITH profile_1, profile_2, algo.similarity.jaccard(looks_ids_1, looks_ids_2) AS jaccard_index, filter(x in looks_ids_2 where not x in looks_ids_1) as recs_looks
+        order by jaccard_index desc, profile_2, recs_looks limit 30
+        with REDUCE(output = [], r IN collect(recs_looks) | output + r) AS flat
+        unwind(flat) as dup_flat
+        return distinct dup_flat

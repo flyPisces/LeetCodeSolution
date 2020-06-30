@@ -16,6 +16,7 @@ import java.util.*;
  */
 public class Solution {
 
+    // https://leetcode.com/problems/remove-invalid-parentheses/discuss/75034/Easiest-9ms-Java-Solution
     List<String> result = new ArrayList<>();
     int max = 0;
 
